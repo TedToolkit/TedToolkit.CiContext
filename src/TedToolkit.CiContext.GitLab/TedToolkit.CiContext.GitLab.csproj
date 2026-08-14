@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\externals\TedToolkit\props\CodeAnalysis.props" />
+  <Import Project="..\..\externals\TedToolkit\props\NugetPackage.props" />
+  <Import Project="..\..\externals\TedToolkit\props\AlmostAllFrameworks.props" />
+
+  <PropertyGroup>
+    <Title>TedToolkit.CiContext.GitLab</Title>
+    <Description>Strongly typed access to GitLab predefined CI/CD environment variables.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TedToolkit.CiContext/TedToolkit.CiContext.csproj" />
+  </ItemGroup>
+
+</Project>

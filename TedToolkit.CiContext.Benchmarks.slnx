@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/TedToolkit.CiContext.GitLab.Benchmarks/TedToolkit.CiContext.GitLab.Benchmarks.csproj" />
+    <File Path="benchmarks/TedToolkit.CiContext.GitLab.Benchmarks/README.md" />
+  </Folder>
+</Solution>

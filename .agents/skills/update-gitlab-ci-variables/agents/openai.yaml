@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update GitLab CI Variables"
+  short_description: "Sync typed APIs with official GitLab variables"
+  default_prompt: "Use $update-gitlab-ci-variables to update this repository from the current official GitLab predefined-variable documentation."

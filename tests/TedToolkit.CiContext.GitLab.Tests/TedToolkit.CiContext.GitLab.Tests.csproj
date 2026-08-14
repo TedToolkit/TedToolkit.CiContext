@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\externals\TedToolkit\props\CodeAnalysis.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);RCS1046;SA1600;SA1601;SA1602;CS1591;SA1615</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" />
+    <ProjectReference Include="../../src/TedToolkit.CiContext/TedToolkit.CiContext.csproj" />
+    <ProjectReference Include="../../src/TedToolkit.CiContext.GitLab/TedToolkit.CiContext.GitLab.csproj" />
+    <Using Include="TedToolkit.Ci" />
+    <Using Include="TedToolkit.GitLab" />
+  </ItemGroup>
+
+</Project>

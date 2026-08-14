@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\externals\TedToolkit\props\CodeAnalysis.props" />
+  <Import Project="..\..\externals\TedToolkit\props\NugetPackage.props" />
+  <Import Project="..\..\externals\TedToolkit\props\AlmostAllFrameworks.props" />
+
+  <PropertyGroup>
+    <Title>TedToolkit.CiContext.GitHubActions</Title>
+    <Description>Strongly typed access to GitHub Actions default environment variables.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TedToolkit.CiContext/TedToolkit.CiContext.csproj" />
+  </ItemGroup>
+
+</Project>

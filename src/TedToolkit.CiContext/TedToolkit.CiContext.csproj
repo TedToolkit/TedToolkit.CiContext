@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\externals\TedToolkit\props\CodeAnalysis.props" />
+  <Import Project="..\..\externals\TedToolkit\props\NugetPackage.props" />
+  <Import Project="..\..\externals\TedToolkit\props\AlmostAllFrameworks.props" />
+
+  <PropertyGroup>
+    <Title>TedToolkit.CiContext</Title>
+    <Description>Provider-neutral primitives for strongly typed CI process environment contexts.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TedToolkit.FileSystem" />
+  </ItemGroup>
+
+</Project>

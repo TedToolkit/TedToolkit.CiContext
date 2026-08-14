@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update GitHub Actions CI Variables"
+  short_description: "Synchronize GitHub Actions default CI variables"
+  default_prompt: "Use $update-github-actions-ci-variables to synchronize this repository with GitHub official default environment-variable reference."
