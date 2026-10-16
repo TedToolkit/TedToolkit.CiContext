@@ -21,7 +21,6 @@
     <Project Path="src/TedToolkit.CiContext.GitLab/TedToolkit.CiContext.GitLab.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/TedToolkit.CiContext.AotSmoke/TedToolkit.CiContext.AotSmoke.csproj" />
     <Project Path="tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj" />
     <Project Path="tests/TedToolkit.CiContext.GitHubActions.Tests/TedToolkit.CiContext.GitHubActions.Tests.csproj" />
     <Project Path="tests/TedToolkit.CiContext.GitLab.Tests/TedToolkit.CiContext.GitLab.Tests.csproj" />

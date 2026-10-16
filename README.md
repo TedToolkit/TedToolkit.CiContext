@@ -113,24 +113,7 @@ dotnet run --project tests/TedToolkit.CiContext.GitLab.Tests/TedToolkit.CiContex
 dotnet run --project tests/TedToolkit.CiContext.GitHubActions.Tests/TedToolkit.CiContext.GitHubActions.Tests.csproj -c Release --no-restore
 ```
 
-CI runs the multi-target core tests in a dedicated job with `-f net10.0`; the shared build pipeline runs the single-target provider tests. The build pipeline depends on the core tests and Native AOT checks passing.
-
 The [GitLab benchmark project](benchmarks/TedToolkit.CiContext.GitLab.Benchmarks/README.md) measures environment-access and parsing trade-offs separately from correctness tests.
-
-### Native AOT Verification
-
-The .NET 8 and later package assets support Native AOT. Enum mappings use reflection once per enum type, with public-field preservation annotations flowing through the generic API and cache. This preserves `CiEnumValueAttribute` mappings for provider enums and enums defined by consumers without requiring a source generator.
-
-CI publishes and runs the native smoke executable on Linux and Windows for .NET 8, 9, and 10. It rejects execution with a JIT runtime and verifies every provider enum type, consumer-defined enums, mapping aliases and errors, shared readers, and secret redaction. Native compiler and trimming warnings fail the publish step.
-
-With the [Native AOT toolchain](https://learn.microsoft.com/dotnet/core/deploying/native-aot/#prerequisites) installed, run the Linux check locally:
-
-```shell
-dotnet publish tests/TedToolkit.CiContext.AotSmoke/TedToolkit.CiContext.AotSmoke.csproj -c Release -f net8.0 -r linux-x64 -o artifacts/aot
-./artifacts/aot/TedToolkit.CiContext.AotSmoke
-```
-
-On Windows, select `win-x64` and run `artifacts/aot/TedToolkit.CiContext.AotSmoke.exe`. Repeat with `net9.0` or `net10.0` to verify those package assets.
 
 ## Maintaining Provider Coverage
 
