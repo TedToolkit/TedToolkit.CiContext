@@ -9,6 +9,10 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 
+#if NET6_0_OR_GREATER
+using System.Diagnostics.CodeAnalysis;
+#endif
+
 namespace TedToolkit.Ci;
 
 /// <summary>
@@ -106,7 +110,11 @@ public static partial class CiEnvironment
     /// <exception cref="ArgumentException"><paramref name="name"/> is empty.</exception>
     /// <exception cref="FormatException">The variable does not contain a mapped value.</exception>
     /// <exception cref="InvalidOperationException">The enum mapping is incomplete or ambiguous.</exception>
-    public static TEnum? GetEnumValue<TEnum>(string name)
+    public static TEnum? GetEnumValue<
+#if NET6_0_OR_GREATER
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+        TEnum>(string name)
         where TEnum : struct, Enum
     {
         var value = GetRawValue(name);
@@ -120,7 +128,11 @@ public static partial class CiEnvironment
             : throw CreateInvalidValueException(name, $"a documented {typeof(TEnum).Name} value");
     }
 
-    private static Dictionary<string, TEnum> GetEnumValues<TEnum>()
+    private static Dictionary<string, TEnum> GetEnumValues<
+#if NET6_0_OR_GREATER
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+        TEnum>()
         where TEnum : struct, Enum
     {
         try
@@ -140,7 +152,11 @@ public static partial class CiEnvironment
         return new($"CI environment variable '{name}' must contain {expected}.");
     }
 
-    private static class EnumValueMap<TEnum>
+    private static class EnumValueMap<
+#if NET6_0_OR_GREATER
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
+#endif
+        TEnum>
         where TEnum : struct, Enum
     {
         internal static readonly Dictionary<string, TEnum> Values = Create();

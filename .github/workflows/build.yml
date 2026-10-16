@@ -7,6 +7,68 @@ permissions:
   pull-requests: write
 
 jobs:
+  test-core:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0'
+
+      - name: Run core tests
+        run: dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net10.0 -- --report-trx
+
+  test-aot:
+    name: Native AOT (${{ matrix.os }}, ${{ matrix.framework }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        framework: [net8.0, net9.0, net10.0]
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+          - os: windows-latest
+            rid: win-x64
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0'
+
+      - name: Install native toolchain
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y clang zlib1g-dev
+
+      - name: Publish native executable
+        run: >-
+          dotnet publish tests/TedToolkit.CiContext.AotSmoke/TedToolkit.CiContext.AotSmoke.csproj
+          -c Release -f ${{ matrix.framework }} -r ${{ matrix.rid }} -o artifacts/aot
+
+      - name: Run native executable
+        shell: pwsh
+        run: |
+          $taskExecutable = "./artifacts/aot/TedToolkit.CiContext.AotSmoke"
+          if ($IsWindows) { $taskExecutable += ".exe" }
+          & $taskExecutable
+          exit $LASTEXITCODE
+
   run-build-project:
+    needs: [test-core, test-aot]
     uses: TedToolkit/TedToolkit/.github/workflows/build.yml@development
     secrets: inherit

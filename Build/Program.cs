@@ -21,7 +21,6 @@ var pipeline = new TedPipeline(
         Solution = Solutions.TedToolkit_CiContext,
         TestFiles =
         [
-            Projects.TedToolkit_CiContext_Tests,
             Projects.TedToolkit_CiContext_GitLab_Tests,
             Projects.TedToolkit_CiContext_GitHubActions_Tests,
         ],
