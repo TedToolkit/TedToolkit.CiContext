@@ -1,11 +1,16 @@
 ---
 name: read-typed-ci-environment
 description: >-
-  Read raw or typed process environment variables with TedToolkit.CiContext when implementing a custom CI variable or provider-neutral tooling.
+  Use TedToolkit.CiContext to read typed CI variables from GitHub Actions, GitLab CI/CD, or the process environment.
 ---
 
-# Read a Typed CI Environment
+# Read Typed CI Environment
 
-- Use `CiEnvironment.GetRawValue` for unknown variables or when preserving the original value. Use the matching typed reader for a known contract.
-- Treat a missing variable as `null` and handle `FormatException` as malformed input. Read once into a local variable if the operation needs a consistent snapshot.
-- Keep credentials as `CiSecret<T>` until handing them directly to a consumer that needs the value. Exercise missing and malformed inputs without logging their raw contents.
+Identify the CI provider and decide whether the value is predefined or custom. Provider APIs expose their own vocabulary and availability rules.
+
+## Read and validate a value
+
+1. Use the GitHub Actions or GitLab typed accessor for a known predefined value. See [provider accessors](references/providers.md) for the correct namespaces and availability checks.
+2. Use `CiEnvironment.GetRawValue("CUSTOM_CI_VALUE")` from `TedToolkit.Ci` when preserving a custom or malformed value. Use the typed reader when the variable has a known contract.
+3. Treat a missing value as `null`. A malformed typed value can throw `FormatException`. Read into a local once if several operations need the same snapshot, since each access reads the current process environment.
+4. Keep credentials as `CiSecret<T>` until passing them to an API that needs the raw value. Its ordinary string output is redacted. Exercise missing, malformed, and present values without logging the contents.

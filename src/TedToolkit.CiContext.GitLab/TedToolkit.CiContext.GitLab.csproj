@@ -14,9 +14,4 @@
     <ProjectReference Include="../TedToolkit.CiContext/TedToolkit.CiContext.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <None Include="../../.agents/skills/read-gitlab-ci-context/**/*"
-          Pack="true" PackagePath="skills/read-gitlab-ci-context/" />
-  </ItemGroup>
 </Project>
