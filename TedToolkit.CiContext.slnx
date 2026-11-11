@@ -1,8 +1,5 @@
 <Solution>
   <Folder Name="/build/">
-    <Project Path="Build/Build.csproj">
-      <Build Project="false" />
-    </Project>
   </Folder>
   <Folder Name="/SolutionItems/">
     <File Path=".editorconfig" />
