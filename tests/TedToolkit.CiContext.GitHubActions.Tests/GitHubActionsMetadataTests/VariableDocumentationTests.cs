@@ -8,6 +8,7 @@
 using System.Reflection;
 using System.Xml.Linq;
 
+using TedToolkit.FileSystem;
 using TedToolkit.GitHub.Tests;
 
 namespace TedToolkit.CiContext.GitHubActions.Tests.GitHubActionsMetadataTests;
@@ -20,8 +21,8 @@ internal sealed class VariableDocumentationTests
     [Test]
     public async Task Should_document_every_terminal_variable_contract()
     {
-        var documentPath = Path.Combine(AppContext.BaseDirectory, "TedToolkit.CiContext.GitHubActions.xml");
-        var documentedMembers = XDocument.Load(documentPath)
+        var documentPath = DirectoryPath.BaseDirectory / "TedToolkit.CiContext.GitHubActions.xml".AsFileName();
+        var documentedMembers = XDocument.Load(documentPath.FullName)
             .Descendants("member")
             .ToDictionary(
                 static member => member.Attribute("name")!.Value,
