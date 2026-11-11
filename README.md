@@ -88,20 +88,16 @@ See the approved [product intent](docs/product/README.md) and [package-family ar
 ### Prerequisites
 
 - A .NET SDK capable of building the target frameworks
-- Git with submodule support
+- Git
 
-Clone the repository and its build infrastructure:
+Clone the repository:
 
 ```shell
-git clone --recursive https://github.com/TedToolkit/TedToolkit.CiContext.git
+git clone https://github.com/TedToolkit/TedToolkit.CiContext.git
 cd TedToolkit.CiContext
 ```
 
-For an existing clone:
-
-```shell
-git submodule update --init --recursive
-```
+MSBuild restores the shared configuration from the version of `TedToolkit.Build.Sdk` pinned in `global.json`.
 
 ### Build and Test
 
