@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\externals\TedToolkit\props\CodeAnalysis.props" />
+  <Import Project="CodeAnalysis.props" Sdk="TedToolkit.Build.Sdk" />
 
   <PropertyGroup>
     <TargetFrameworks>net10.0;net48</TargetFrameworks>
