@@ -90,7 +90,7 @@ Use reflection over static terminal properties carrying `CiVariableAttribute` wh
 
 ## Target Frameworks
 
-`net6.0`, `net7.0`, `net8.0`, `net9.0`, `net10.0`, `net472`, `net48`, `netstandard2.0`, and `netstandard2.1`.
+`net6.0`, `net7.0`, `net8.0`, `net9.0`, `net10.0`, `net11.0`, `net472`, `net48`, `netstandard2.0`, and `netstandard2.1`.
 
 ## Related Documentation
 

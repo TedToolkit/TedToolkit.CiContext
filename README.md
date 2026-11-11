@@ -75,6 +75,7 @@ Supported target frameworks:
 - `net8.0`
 - `net9.0`
 - `net10.0`
+- `net11.0`
 - `net472`
 - `net48`
 - `netstandard2.0`
@@ -107,7 +108,7 @@ git submodule update --init --recursive
 ```shell
 dotnet restore TedToolkit.CiContext.slnx
 dotnet build TedToolkit.CiContext.slnx -c Release --no-restore
-dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net10.0 --no-restore
+dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net11.0 --no-restore
 dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net48 --no-restore
 dotnet run --project tests/TedToolkit.CiContext.GitLab.Tests/TedToolkit.CiContext.GitLab.Tests.csproj -c Release --no-restore
 dotnet run --project tests/TedToolkit.CiContext.GitHubActions.Tests/TedToolkit.CiContext.GitHubActions.Tests.csproj -c Release --no-restore
