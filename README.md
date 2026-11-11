@@ -75,6 +75,7 @@ Supported target frameworks:
 - `net8.0`
 - `net9.0`
 - `net10.0`
+- `net11.0`
 - `net472`
 - `net48`
 - `netstandard2.0`
@@ -87,27 +88,23 @@ See the approved [product intent](docs/product/README.md) and [package-family ar
 ### Prerequisites
 
 - A .NET SDK capable of building the target frameworks
-- Git with submodule support
+- Git
 
-Clone the repository and its build infrastructure:
+Clone the repository:
 
 ```shell
-git clone --recursive https://github.com/TedToolkit/TedToolkit.CiContext.git
+git clone https://github.com/TedToolkit/TedToolkit.CiContext.git
 cd TedToolkit.CiContext
 ```
 
-For an existing clone:
-
-```shell
-git submodule update --init --recursive
-```
+MSBuild restores the shared configuration from the version of `TedToolkit.Build.Sdk` pinned in `global.json`.
 
 ### Build and Test
 
 ```shell
 dotnet restore TedToolkit.CiContext.slnx
 dotnet build TedToolkit.CiContext.slnx -c Release --no-restore
-dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net10.0 --no-restore
+dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net11.0 --no-restore
 dotnet run --project tests/TedToolkit.CiContext.Tests/TedToolkit.CiContext.Tests.csproj -c Release -f net48 --no-restore
 dotnet run --project tests/TedToolkit.CiContext.GitLab.Tests/TedToolkit.CiContext.GitLab.Tests.csproj -c Release --no-restore
 dotnet run --project tests/TedToolkit.CiContext.GitHubActions.Tests/TedToolkit.CiContext.GitHubActions.Tests.csproj -c Release --no-restore
