@@ -99,6 +99,10 @@ Use reflection over static terminal properties carrying `CiVariableAttribute` wh
 - [Package-family architecture](../../docs/architecture/ci-context-package-family.md)
 - [Current architecture](../../docs/architecture/gitlab-ci-variable-api.md)
 
+## Agent skill
+
+The `read-typed-ci-environment` skill ships in `TedToolkit.CiContext`, which this package restores as a dependency. If your project references only this package, get the resolved `TedToolkit.CiContext` version from `dotnet package list --include-transitive` and import the skill with `dotnet-package-skills install --package TedToolkit.CiContext@<resolved-version>`.
+
 ## License
 
 Licensed under LGPL-3.0.

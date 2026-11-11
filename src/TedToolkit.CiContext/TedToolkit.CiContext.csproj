@@ -14,4 +14,9 @@
     <PackageReference Include="TedToolkit.FileSystem" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <None Include="../../.agents/skills/read-typed-ci-environment/**/*"
+          Pack="true" PackagePath="skills/read-typed-ci-environment/" />
+  </ItemGroup>
 </Project>

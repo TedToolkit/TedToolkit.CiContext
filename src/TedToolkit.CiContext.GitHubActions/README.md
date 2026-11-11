@@ -63,6 +63,10 @@ Use reflection over terminal properties carrying the shared `CiVariableAttribute
 - [Repository overview](../../README.md)
 - [GitHub Actions variable API architecture](../../docs/architecture/github-actions-variable-api.md)
 
+## Agent skill
+
+The `read-typed-ci-environment` skill ships in `TedToolkit.CiContext`, which this package restores as a dependency. If your project references only this package, get the resolved `TedToolkit.CiContext` version from `dotnet package list --include-transitive` and import the skill with `dotnet-package-skills install --package TedToolkit.CiContext@<resolved-version>`.
+
 ## License
 
 Licensed under LGPL-3.0.
